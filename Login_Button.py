@@ -1,3 +1,4 @@
+#Importing tkinter
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
@@ -8,6 +9,7 @@ loginpage.geometry("650x650")
 loginpage.title("Main Window")
 loginpage.configure(background='#ADD8E6')
 
+#Command when user clicks on register
 def register():
     def save_credentials():
         username = username_entry.get()
@@ -19,7 +21,9 @@ def register():
                 if row and row[0] == username:
                     messagebox.showerror("Registration Error", "Username already exists. Please choose another.")
                     return
-
+        global logged_in_username
+        logged_in_username = username 
+        
         with open("credentials.csv", "a", newline="") as file:
             writer = csv.writer(file)
             writer.writerow([username, password])
@@ -27,7 +31,7 @@ def register():
         messagebox.showinfo("Registration Successful", "Registration successful for user: {}".format(username))
         register_window.destroy()
         loginpage.destroy()
-        import Main_Screen.py
+        import shopping
 
     def update_strength_bar(*args):
         password = password_var.get()
@@ -67,6 +71,7 @@ register_button.pack(side=TOP, pady=(200, 10))
 or_label = ttk.Label(loginpage, text="OR", font=("Helvetica", 14, "bold"))
 or_label.pack(pady=20)
 
+#Command when user clicks on login
 def login():
     def check_credentials():
         entered_username = username_entry.get()
@@ -77,8 +82,12 @@ def login():
             for row in reader:
                 if row and row[0] == entered_username and row[1] == entered_password:
                     messagebox.showinfo("Login Successful", "Welcome, {}".format(entered_username))
+
+                    global logged_in_username
+                    logged_in_username = entered_username
+
                     loginpage.destroy()
-                    import Main_Screen.py
+                    import shopping
                     return
 
         messagebox.showerror("Login Failed", "Invalid username or password")
