@@ -1,0 +1,3 @@
+tk
+Pillow
+mysql-connctor-python
