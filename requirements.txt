@@ -1,3 +1,2 @@
-tk
 Pillow
-mysql-connctor-python
+mysql-connector-python
