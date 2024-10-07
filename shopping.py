@@ -10,7 +10,7 @@ from Login_Button import logged_in_username
 
 
 mydb = mysql.connector.connect(
-    host="localhost",       # Your MySQL host (usually localhost)
+    host="localhost",       # Your MySQL host 
     user="root",            # Your MySQL username
     password="root"         # Your MySQL password
 )
@@ -36,13 +36,15 @@ create_database()
 def create_transactions_table():
     mycursor.execute("""
     CREATE TABLE IF NOT EXISTS transactions (
-        S_No INT AUTO_INCREMENT PRIMARY KEY,
+        Trans_ID INT AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255),
         item VARCHAR(255),
         quantity INT,
         total_price DECIMAL(10, 2),
         transaction_date DATE,   
-        transaction_time TIME
+        transaction_time TIME,
+        PRIMARY KEY(Trans_ID,username)
+
     )
     """) 
     #note, curdate() is the same as current_date()
