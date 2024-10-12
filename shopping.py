@@ -36,7 +36,7 @@ create_database()
 def create_transactions_table():
     mycursor.execute("""
     CREATE TABLE IF NOT EXISTS transactions (
-        Trans_ID INT AUTO_INCREMENT PRIMARY KEY,
+        Trans_ID INT AUTO_INCREMENT,
         username VARCHAR(255),
         item VARCHAR(255),
         quantity INT,
