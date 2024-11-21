@@ -47,7 +47,7 @@ def register():
     register_window = Toplevel(loginpage)
     register_window.configure(background='#ADD8E6')
     register_window.title("Register")
-    register_window.geometry("300x200")
+    register_window.geometry("300x250")
 
     Label(register_window, text="Username:").pack(pady=10)
     username_entry = Entry(register_window)
@@ -99,7 +99,7 @@ def login():
     login_window = Toplevel(loginpage)
     login_window.configure(background='#ADD8E6')
     login_window.title("Login")
-    login_window.geometry("300x300")
+    login_window.geometry("300x200")
 
     Label(login_window, text="Username:").pack(pady=10)
     username_entry = Entry(login_window)
